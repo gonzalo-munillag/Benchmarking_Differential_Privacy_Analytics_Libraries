@@ -7,7 +7,6 @@ import os
 import psutil
 from needed_functions import *
 epsilon = pd.read_pickle('epsilon.pkl')
-std_val = pd.read_pickle('std_val.pkl')
 
 library_name = 'diffprivlib'
 
