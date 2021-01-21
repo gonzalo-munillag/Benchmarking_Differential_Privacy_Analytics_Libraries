@@ -42,136 +42,141 @@ log_errors <- function(dataset_folder_path, query, i, eps) {
 
 
 calculate_dp_sum <- function(data, number_of_experiments, dataset_folder_path, query_name, normal_distribution, eps, i, maximum, minimum) {
-  sum_vec <- c()
+  print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+  
   time_taken <- c()
   replicate(
     number_of_experiments,
     {
       start.time <- Sys.time()
       
-      ## ...function(normal_distribution) sum(normal_distribution)
-      target <- function(data) sum(normal_distribution)
+      target <- function(X) sum(X)
       mechanism <- DPMechLaplace(target = target)
       distr <- function(n) rnorm(n)
-      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(normal_distribution), gamma = 0.1)
+      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(data), gamma = 0.1)
       pparams <- DPParamsEps(epsilon = eps) 
-      ## ..., X=normal_distribution)
-      r <- releaseResponse(mechanism, privacyParams = pparams)
+      r <- releaseResponse(mechanism, privacyParams = pparams, X=normal_distribution)
       rr <- c(r$response)
       
       end.time <- Sys.time()
       time.taken <- round(end.time - start.time,5)
-      print(time.taken)
-      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      #print(time.taken)
+      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/sum/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      vac <- append(sum_vec, rr, after = 0)
-      write.table(vac, paste0(dataset_folder_path,"/diffpriv_micro/sum/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      write.table(rr, paste0(dataset_folder_path,"/diffpriv_micro/sum/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      true_sum <- sapply(data, sum)
-      error <- true_sum - vac
+      true_sum <- sum(data)
+      error <- true_sum - rr
       write.table(error, paste0(dataset_folder_path,"/diffpriv_micro/sum/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      scaled_error <- error/NROW(normal_distribution)
+      scaled_error <- error/NROW(data)
       write.table(scaled_error, paste0(dataset_folder_path,"/diffpriv_micro/sum/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+      
     }
   )
 }
 
 calculate_dp_var <- function(data, number_of_experiments, dataset_folder_path, query_name, normal_distribution, eps, i, maximum, minimum) {
-  var_vec <- c()
+  print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+  
   time_taken <- c()
   replicate(
     number_of_experiments,
     {
       start.time <- Sys.time()
       
-      target <- function(data) var(normal_distribution)
+      target <- function(X) var(X)
       mechanism <- DPMechLaplace(target = target)
       distr <- function(n) rnorm(n)
-      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(normal_distribution), gamma = 0.1)
+      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(data), gamma = 0.1)
       pparams <- DPParamsEps(epsilon = eps) 
-      r <- releaseResponse(mechanism, privacyParams = pparams)
+      r <- releaseResponse(mechanism, privacyParams = pparams, X=normal_distribution)
       rr <- c(r$response)
       
       end.time <- Sys.time()
       time.taken <- round(end.time - start.time,5)
-      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      print(time.taken)
+      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/var/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      #print(time.taken)
       
-      vac <- append(var_vec, rr, after = 0)
-      write.table(vac, paste0(dataset_folder_path,"/diffpriv_micro/var/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      true_var <- sapply(data, var)
-      error <- true_var - vac
+      write.table(rr, paste0(dataset_folder_path,"/diffpriv_micro/var/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      true_var <- var(data)
+      
+      error <- true_var - rr
       write.table(error, paste0(dataset_folder_path,"/diffpriv_micro/var/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      scaled_error <- error/NROW(normal_distribution)
+      
+      scaled_error = (error)/NROW(data)
       write.table(scaled_error, paste0(dataset_folder_path,"/diffpriv_micro/var/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+      
     }
   )
 }
 
 calculate_dp_mean <- function(data, number_of_experiments, dataset_folder_path, query_name, normal_distribution, eps, i, maximum, minimum) {
-  mean_vec <- c()
+  print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+  
   time_taken <- c()
   replicate(
     number_of_experiments,
     {
       start.time <- Sys.time()
       
-      target <- function(data) mean(normal_distribution)
+      target <- function(X) mean(X)
       mechanism <- DPMechLaplace(target = target)
       distr <- function(n) rnorm(n)
-      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(normal_distribution), gamma = 0.1)
+      mechanism <- sensitivitySampler(mechanism, oracle=distr, n=NROW(data), gamma = 0.1)
       pparams <- DPParamsEps(epsilon = eps) 
-      r <- releaseResponse(mechanism, privacyParams = pparams)
+      r <- releaseResponse(mechanism, privacyParams = pparams, X=normal_distribution)
       rr <- c(r$response)
       
       end.time <- Sys.time()
       time.taken <- round(end.time - start.time,5)
-      print(time.taken)
-      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/mean/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      #print(time.taken)
       
-      vac <- append(mean_vec, rr, after = 0)
-      write.table(vac, paste0(dataset_folder_path,"/diffpriv_micro/mean/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      true_mean <- sapply(data, mean)
-      error <- true_mean - vac
+      
+      write.table(rr, paste0(dataset_folder_path,"/diffpriv_micro/mean/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      true_mean <- mean(data)
+      error <- true_mean - rr
+      
       write.table(error, paste0(dataset_folder_path,"/diffpriv_micro/mean/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       scaled_error <- error/NROW(data)
       write.table(scaled_error, paste0(dataset_folder_path,"/diffpriv_micro/mean/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+      
     }
   )
+  
 }
 
-calculate_dp_count <- function(data, number_of_experiments, dataset_folder_path, query_name, eps, i) {
-  count_vec <- c()
+calculate_dp_count <- function(data, number_of_experiments, dataset_folder_path, normal_distribution, query_name, eps, i) {
+  print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+  
   time_taken <- c()
   replicate(
     number_of_experiments,
     {
       start.time <- Sys.time()
       
-      target <- function(data) NROW(data)
+      target <- function(X) NROW(X)
       mechanism <- DPMechLaplace(target = target, sensitivity = 1, dims = 1)
       pparams <- DPParamsEps(epsilon = eps) 
       r <- releaseResponse(mechanism, privacyParams = pparams, X = data)
       rr <- c(r$response)
-      
+      #print(rr)
       end.time <- Sys.time()
       time.taken <- round(end.time - start.time,5)
-      print(time.taken)
+      #print(time.taken)
       write.table(round(end.time - start.time,5), paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/time/time_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      vac <- append(count_vec, rr, after = 0)
-      write.table(vac, paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      error <- NROW(data) - vac
+      write.table(rr, paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/dp/DP_count_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
+      error <- NROW(data) - rr
+      print(NROW(data) - rr)
       write.table(error, paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       scaled_error <- error/NROW(data)
       write.table(scaled_error, paste0(dataset_folder_path,"/diffpriv_micro/count/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
-      print(paste0("calculated results for dataset = ",i," and epsilon = ",eps," completed"))
+      
     }
   )
+  
 }
 
 diffpriv_single_query <- function(number_of_csv_file, number_of_experiments, dataset_folder_path, query_name) {
@@ -187,7 +192,7 @@ diffpriv_single_query <- function(number_of_csv_file, number_of_experiments, dat
     for (eps in epsilon) {
  
       if (query_name == "count") {
-        calculate_dp_count(data, number_of_experiments, dataset_folder_path, query_name, eps, i)
+        calculate_dp_count(data, number_of_experiments, dataset_folder_path, query_name, data, eps, i)
       } else if (query_name == "sum") {
         calculate_dp_sum(data, number_of_experiments, dataset_folder_path, query_name, normal_distribution, eps, i, maximum, minimum)
       } else if (query_name == "var") {
@@ -201,5 +206,8 @@ diffpriv_single_query <- function(number_of_csv_file, number_of_experiments, dat
   }
   
 }
+
+
+
 
 
