@@ -1,6 +1,8 @@
 
 # Link of the datasets.
 
-# Education
+### Education
+https://archive.ics.uci.edu/ml/datasets/Student+Performance
 
-# Census
+### Census
+https://archive.ics.uci.edu/ml/datasets/Adult
