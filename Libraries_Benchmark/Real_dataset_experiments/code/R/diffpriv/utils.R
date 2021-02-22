@@ -232,6 +232,7 @@ diffpriv_real_dataset <- function(attribute, number_of_experiments, dataset_fold
 
       data_hrs <- read_csv(file = paste0("~/publication/files/real_datasets/hrs_adult.csv"), col_names = "X1", skip = 1, )
       data <- as.numeric(data_hrs$X1)
+      data <- function(data, UB=80, LB=0) pmax( LB, pmin( vec, UB))    #ref: https://stackoverflow.com/questions/13868963/clip-values-between-a-minimum-and-maximum-allowed-value-in-r
       #print(data)
       maximum = 80.0
       minimum = 0.0
