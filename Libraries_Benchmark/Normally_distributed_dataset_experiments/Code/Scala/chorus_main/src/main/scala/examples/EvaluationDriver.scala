@@ -15,7 +15,7 @@ import scala.io.Source.fromFile
 object EvaluationDriver extends App {
 
 
-
+  //ref: https://stackoverflow.com/questions/39617213/scala-what-is-the-generic-way-to-calculate-standard-deviation
   def StandardDeviation[A](a: Seq[A])(implicit num: Numeric[A]):Double = {
 
     def mean(a: Seq[A]): Double = num.toDouble(a.sum) / a.size
