@@ -104,8 +104,8 @@ object EvaluationDriver extends App {
     println("COUNT query mean: " + meanElements(countResults))
  
     for (dp_count <- countResults){
-    relative_err_count.+= ((true_count - dp_count)/true_count)
-    scale_err_count.+= ((true_count - dp_count)/true_count)
+    relative_err_count.+= (((true_count - dp_count)/true_count).abs)
+    scale_err_count.+= (((true_count - dp_count)/true_count).abs)
     }
     println("COUNT query mean relative error: " + meanElements(relative_err_count))
     val guestFile1 = new PrintWriter(new FileWriter("results//chorus//count//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))
@@ -128,8 +128,8 @@ object EvaluationDriver extends App {
     }
 
     for (dp_sum <- sumResults){
-    relative_err_sum.+= ((dp_sum - true_sum)/true_sum)
-    scale_err_sum.+= ((dp_sum - true_sum)/true_count)
+    relative_err_sum.+= (((dp_sum - true_sum)/true_sum).abs)
+    scale_err_sum.+= (((dp_sum - true_sum)/true_count).abs)
     }
     println("SUM query mean: " + meanElements(sumResults))
     println("SUM query mean relative error: " + meanElements(relative_err_sum))
@@ -154,8 +154,8 @@ object EvaluationDriver extends App {
     }
 
     for (dp_avg <- avgResults){
-    relative_err_avg.+= ((dp_avg - true_avg)/true_avg)
-    scale_err_avg.+= ((dp_avg - true_avg)/true_count)
+    relative_err_avg.+= (((dp_avg - true_avg)/true_avg).abs)
+    scale_err_avg.+= (((dp_avg - true_avg)/true_count).abs)
     }
     println("AVG query mean: " + meanElements(avgResults))
     println("AVG query mean relative error: " + meanElements(relative_err_avg)) 
