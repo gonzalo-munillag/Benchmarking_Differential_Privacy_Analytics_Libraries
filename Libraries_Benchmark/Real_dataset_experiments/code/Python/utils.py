@@ -40,7 +40,7 @@ def save_file_3(DP, library, query, i, param):
     guestFile.close()
 
 ### function to save error and scaled error
-def save_file_4(library_name, normal_distribution, DP_result, true_result, query_name, eps, i):
+def save_file_4(library_name, dataset, DP_result, true_result, query_name, eps, i):
     # DP_result
     save_file_1(DP=DP_result, output_folder='dp', query=query_name, i=i, eps=eps, library=library_name)
     # error
@@ -48,7 +48,7 @@ def save_file_4(library_name, normal_distribution, DP_result, true_result, query
     # relative_error
     save_file_1(DP=(true_result - DP_result)/true_result, output_folder='relative_error', query=query_name, i=i, eps=eps, library=library_name)
     # scaled error
-    save_file_1(DP=(true_result - DP_result)/len(normal_distribution), output_folder='scaled_error', query=query_name, i=i, eps=eps, library=library_name)
+    save_file_1(DP=(true_result - DP_result)/len(dataset), output_folder='scaled_error', query=query_name, i=i, eps=eps, library=library_name)
     
 # function to save mean_error, mean_scaled_error, std_error, std_scaled_error, time, memory. 
 def errors_calculation(library, err, relative_err, scaled_err, time_list, memory, query, i):
@@ -56,12 +56,13 @@ def errors_calculation(library, err, relative_err, scaled_err, time_list, memory
     #print(np.sum(err)/100)
     save_file_2(DP=np.sum(err)/500, output_folder='mean_error', query=query, i=i, library=library)
     # Mean scaled_error
-    print('MEAN SCALED ERROR = {}'.format(np.sum(scaled_err)/500))
+    #print('MEAN SCALED ERROR = {}'.format(np.sum(scaled_err)/500))
     save_file_2(DP=np.sum(scaled_err)/500, output_folder='mean_scaled_error', query=query, i=i, library=library)
     # Std error
     save_file_2(DP=stdev(err), output_folder='std_error', query=query, i=i, library=library)
     # Std scaled_error
     save_file_2(DP=stdev(scaled_err), output_folder='std_scaled_error', query=query, i=i, library=library)
+    print('STD SCALED ERROR = {}'.format(stdev(scaled_err)))
     # Mean relative error
     print('MEAN RELATIVE ERROR = {}'.format(np.sum(relative_err)/500))
     save_file_2(DP=np.sum(relative_err)/500, output_folder='mean_relative_error', query=query, i=i, library=library)
@@ -79,7 +80,7 @@ def errors_calculation(library, err, relative_err, scaled_err, time_list, memory
 #######################################
 class diffprivlib_attribute:
     name = 'diffprivlib'
-    distribution = 'normal_distribution'
+    distribution = 'dataset'
     epsilon = 'eps'
     count_query = dpt.count_nonzero
     sum_query = dpt.sum
@@ -89,7 +90,7 @@ class diffprivlib_attribute:
     var_query = dpt.var
     true_var = np.var
 
-def diffprivlib_count(library_name, number_of_experiments, eps, normal_distribution, query_name, i):
+def diffprivlib_count(library_name, number_of_experiments, eps, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -101,22 +102,22 @@ def diffprivlib_count(library_name, number_of_experiments, eps, normal_distribut
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = getattr(eval('{library}_attribute'.format(library=library_name)),'count_query')(normal_distribution, eps)
+        DP_result = getattr(eval('{library}_attribute'.format(library=library_name)),'count_query')(dataset, eps)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = len(normal_distribution)
+        true_result = len(dataset)
         #print(DP_result)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        print('error = {}'.format(true_result-DP_result))
-        print('relative error = {}'.format((true_result-DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        #print('error = {}'.format(true_result-DP_result))
+        #print('relative error = {}'.format((true_result-DP_result)/true_result))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
-def diffprivlib_all(library_name, number_of_experiments, eps, bounds, normal_distribution, query_name, i):
+def diffprivlib_all(library_name, number_of_experiments, eps, bounds, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -127,18 +128,18 @@ def diffprivlib_all(library_name, number_of_experiments, eps, bounds, normal_dis
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = getattr(eval('{library}_attribute'.format(library=library_name)),'{query}_query'.format(query=query_name))(normal_distribution, eps, bounds=bounds)
+        DP_result = getattr(eval('{library}_attribute'.format(library=library_name)),'{query}_query'.format(query=query_name))(dataset, eps, bounds=bounds)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = getattr(eval('{library}_attribute'.format(library=library_name)),'true_{query}'.format(query=query_name))(normal_distribution)
+        true_result = getattr(eval('{library}_attribute'.format(library=library_name)),'true_{query}'.format(query=query_name))(dataset)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
         #print('error = {}'.format(true_result-DP_result))
         #print('relative error = {}'.format((true_result-DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
 ###########################################################################################################
@@ -150,7 +151,7 @@ def diffprivlib_all(library_name, number_of_experiments, eps, bounds, normal_dis
 
 class pydp_attribute:
     name = 'pydp'
-    distribution = 'normal_distribution'
+    distribution = 'dataset'
     epsilon = 'eps'
     count_query = dp.Count
     sum_query = dp.BoundedSum
@@ -162,7 +163,7 @@ class pydp_attribute:
     std_query = dp.BoundedStandardDeviation
     true_std = np.std
 
-def pydp_count(library_name, number_of_experiments, eps, normal_distribution, query_name, i):
+def pydp_count(library_name, number_of_experiments, eps, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -175,20 +176,20 @@ def pydp_count(library_name, number_of_experiments, eps, normal_distribution, qu
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
         x = getattr(eval('{library}_attribute'.format(library=library_name)),'count_query')(epsilon=eps, dtype='float')
-        DP_result = x.quick_result(list(normal_distribution))
+        DP_result = x.quick_result(list(dataset))
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = len(normal_distribution)
+        true_result = len(dataset)
         #print(DP_result)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
-def pydp_all(library_name, number_of_experiments, eps, minimum, maximum, normal_distribution, query_name, i):
+def pydp_all(library_name, number_of_experiments, eps, minimum, maximum, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -200,18 +201,18 @@ def pydp_all(library_name, number_of_experiments, eps, minimum, maximum, normal_
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
         x = getattr(eval('{library}_attribute'.format(library=library_name)),'{query}_query'.format(query=query_name))(eps, minimum, maximum, dtype='float')
-        DP_result = x.quick_result(list(normal_distribution))
+        DP_result = x.quick_result(list(dataset))
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = getattr(eval('{library}_attribute'.format(library=library_name)),'true_{query}'.format(query=query_name))(normal_distribution)
+        true_result = getattr(eval('{library}_attribute'.format(library=library_name)),'true_{query}'.format(query=query_name))(dataset)
         DP.append(DP_result)
         #print(DP_result)
         #print(true_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
 ###########################################################################################################
@@ -222,22 +223,42 @@ def pydp_all(library_name, number_of_experiments, eps, minimum, maximum, normal_
 #######################################
 
 ##############   Analysis Functions   ###################
-def smartnoise_analysis_count(dataset_folder_path, i, eps):
+def smartnoise_analysis_count(dataset_folder_path, attribute, dataset, i, eps):
+    if attribute == 'age':
+        dataset_column = 'age_adult.csv'
+    if attribute == 'hrs':
+        dataset_column = 'hrs_adult.csv'
+
+    if attribute == 'absences': 
+        dataset_column = 'absences_education.csv'   
+    if attribute == 'grade':
+        dataset_column = 'grade_education.csv'
+    
     with sn.Analysis(neighboring='substitute') as analysis:
-        var_name = ['normal_distribution']
-        data_path = dataset_folder_path+"dataset_{}.csv".format(i)
+        var_name = [attribute]
+        data_path = dataset_column
         data = sn.Dataset(path = data_path, column_names = var_name)
-        data_in_float = sn.to_float(data['normal_distribution'])
+        data_in_float = sn.to_float(data[attribute])
         dp = sn.dp_count(data=data_in_float, privacy_usage={'epsilon':eps})
     analysis.release()
     return dp.value
 
-def smartnoise_analysis_sum(dataset_folder_path, dataset_rows, i, eps, minimum, maximum, query_name):
+def smartnoise_analysis_sum(dataset_folder_path, dataset_rows, attribute, i, eps, minimum, maximum, query_name):
+    if attribute == 'age':
+        dataset_column = 'age_adult.csv'
+    if attribute == 'hrs':
+        dataset_column = 'hrs_adult.csv'
+
+    if attribute == 'absences':
+        dataset_column = 'absences_education.csv'
+    if attribute == 'grade':
+        dataset_column = 'grade_education.csv'
+
     with sn.Analysis(neighboring='substitute') as analysis:
-        var_name = ['normal_distribution']
-        data_path = dataset_folder_path+"/dataset_{}.csv".format(i)
+        var_name = [attribute]
+        data_path = dataset_column
         dataset = sn.Dataset(path = data_path, column_names = var_name)
-        data_in_float = sn.to_float(dataset['normal_distribution'])
+        data_in_float = sn.to_float(dataset[attribute])
         data_in_float = sn.impute(data = data_in_float, lower = minimum, upper = maximum)
         data_in_float = sn.clamp(data_in_float, lower=minimum, upper=maximum)
         data_in_float = sn.resize(data_in_float, number_rows=dataset_rows, lower=minimum, upper=maximum)
@@ -245,12 +266,23 @@ def smartnoise_analysis_sum(dataset_folder_path, dataset_rows, i, eps, minimum, 
     analysis.release()
     return dp.value
 
-def smartnoise_analysis_mean(dataset_folder_path, dataset_rows, i, eps, minimum, maximum, query_name):
+def smartnoise_analysis_mean(dataset_folder_path, dataset_rows, attribute, i, eps, minimum, maximum, query_name):
+
+    if attribute == 'age':
+        dataset_column = 'age_adult.csv'
+    if attribute == 'hrs':
+        dataset_column = 'hrs_adult.csv'
+
+    if attribute == 'absences':
+        dataset_column = 'absences_education.csv'
+    if attribute == 'grade':
+        dataset_column = 'grade_education.csv'
+
     with sn.Analysis(neighboring='substitute') as analysis:
-        var_name = ['normal_distribution']
-        data_path = dataset_folder_path+"/dataset_{}.csv".format(i)
+        var_name = [attribute]
+        data_path = dataset_column
         dataset = sn.Dataset(path = data_path, column_names = var_name)
-        data_in_float = sn.to_float(dataset['normal_distribution'])
+        data_in_float = sn.to_float(dataset[attribute])
         data_in_float = sn.impute(data = data_in_float, lower = minimum, upper = maximum)
         data_in_float = sn.clamp(data_in_float, lower=minimum, upper=maximum)
         data_in_float = sn.resize(data_in_float, number_rows=dataset_rows, lower=minimum, upper=maximum)
@@ -258,12 +290,24 @@ def smartnoise_analysis_mean(dataset_folder_path, dataset_rows, i, eps, minimum,
     analysis.release()
     return dp.value
 
-def smartnoise_analysis_var(dataset_folder_path, dataset_rows, i, eps, minimum, maximum, query_name):
+def smartnoise_analysis_var(dataset_folder_path, dataset_rows, attribute, i, eps, minimum, maximum, query_name):
+
+    if attribute == 'age':
+        dataset_column = 'age_adult.csv'
+    if attribute == 'hrs':
+        dataset_column = 'hrs_adult.csv'
+
+    if attribute == 'absences':
+        dataset_column = 'absences_education.csv'
+    if attribute == 'grade':
+        dataset_column = 'grade_education.csv'
+
+
     with sn.Analysis(neighboring='substitute') as analysis:
-        var_name = ['normal_distribution']
-        data_path = dataset_folder_path+"/dataset_{}.csv".format(i)
+        var_name = [attribute]
+        data_path = dataset_column
         dataset = sn.Dataset(path = data_path, column_names = var_name)
-        data_in_float = sn.to_float(dataset['normal_distribution'])
+        data_in_float = sn.to_float(dataset[attribute])
         data_in_float = sn.impute(data = data_in_float, lower = minimum, upper = maximum)
         data_in_float = sn.clamp(data_in_float, lower=minimum, upper=maximum)
         data_in_float = sn.resize(data_in_float, number_rows=dataset_rows, lower=minimum, upper=maximum)
@@ -272,7 +316,7 @@ def smartnoise_analysis_var(dataset_folder_path, dataset_rows, i, eps, minimum, 
     return dp.value
 ####################################
 
-def smartnoise_count(library_name, dataset_folder_path, number_of_experiments, eps, normal_distribution, query_name, i):
+def smartnoise_count(library_name, dataset_folder_path, attribute, number_of_experiments, eps, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -284,19 +328,19 @@ def smartnoise_count(library_name, dataset_folder_path, number_of_experiments, e
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = smartnoise_analysis_count(dataset_folder_path=dataset_folder_path, i=i, eps=eps)
+        DP_result = smartnoise_analysis_count(dataset_folder_path=dataset_folder_path, attribute=attribute, dataset=dataset, i=i, eps=eps)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = len(normal_distribution)
+        true_result = len(dataset)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
-def smartnoise_sum(library_name, dataset_folder_path, number_of_experiments, eps, minimum, maximum, normal_distribution, query_name, i):
+def smartnoise_sum(library_name, dataset_folder_path, number_of_experiments, attribute, eps, minimum, maximum, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -307,20 +351,20 @@ def smartnoise_sum(library_name, dataset_folder_path, number_of_experiments, eps
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = smartnoise_analysis_sum(dataset_folder_path=dataset_folder_path, dataset_rows=len(normal_distribution), query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
+        DP_result = smartnoise_analysis_sum(dataset_folder_path=dataset_folder_path, dataset_rows=len(dataset), attribute=attribute, query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = np.sum(normal_distribution)
+        true_result = np.sum(dataset)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
 
  
-def smartnoise_mean(library_name, dataset_folder_path, number_of_experiments, eps, minimum, maximum, normal_distribution, query_name, i):
+def smartnoise_mean(library_name, dataset_folder_path, number_of_experiments, attribute, eps, minimum, maximum, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -331,20 +375,20 @@ def smartnoise_mean(library_name, dataset_folder_path, number_of_experiments, ep
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = smartnoise_analysis_mean(dataset_folder_path=dataset_folder_path, dataset_rows=len(normal_distribution), query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
+        DP_result = smartnoise_analysis_mean(dataset_folder_path=dataset_folder_path, dataset_rows=len(dataset), attribute=attribute, query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = np.mean(normal_distribution)
+        true_result = np.mean(dataset)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
  
  
-def smartnoise_var(library_name, dataset_folder_path, number_of_experiments, eps, minimum, maximum, normal_distribution, query_name, i):
+def smartnoise_var(library_name, dataset_folder_path, number_of_experiments, attribute, eps, minimum, maximum, dataset, query_name, i):
     DP = []
     err = []
     relative_err = []
@@ -355,16 +399,16 @@ def smartnoise_var(library_name, dataset_folder_path, number_of_experiments, eps
         # query run time
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        DP_result = smartnoise_analysis_var(dataset_folder_path=dataset_folder_path, dataset_rows=len(normal_distribution), query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
+        DP_result = smartnoise_analysis_var(dataset_folder_path=dataset_folder_path, dataset_rows=len(dataset), attribute=attribute, query_name=query_name, i=i, eps=eps, minimum=minimum, maximum=maximum)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = np.var(normal_distribution)
+        true_result = np.var(dataset)
         DP.append(DP_result)
         err.append(true_result - DP_result)
         relative_err.append(abs((true_result - DP_result)/true_result))
-        scaled_err.append(abs((true_result - DP_result)/len(normal_distribution)))
+        scaled_err.append(abs((true_result - DP_result)/len(dataset)))
         
-        save_file_4(library_name=library_name, normal_distribution=normal_distribution, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
+        save_file_4(library_name=library_name, dataset=dataset, DP_result=DP_result, true_result=true_result, query_name=query_name, eps=eps, i=i)
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=library_name)
   
 ###########################################################################################################
@@ -375,14 +419,14 @@ def smartnoise_var(library_name, dataset_folder_path, number_of_experiments, eps
 
 class additive_noise_attribute:
     name = 'additive_noise'
-    distribution = 'normal_distribution'
+    distribution = 'dataset'
     epsilon = 'eps'
     true_count = len
     true_sum = np.sum
     true_mean = np.mean
     true_var = np.var
 
-def additive_noise_all(experiment_name, number_of_experiments, normal_distribution, query_name, i):
+def additive_noise_all(experiment_name, number_of_experiments, dataset, query_name, i):
     err = []
     relative_err = []
     scaled_err = []
@@ -391,14 +435,14 @@ def additive_noise_all(experiment_name, number_of_experiments, normal_distributi
     for iteration in range(number_of_experiments):
         process = psutil.Process(os.getpid())
         begin_time = time.time() 
-        #error = np.random.uniform((eval('true_'+query_name)(normal_distribution)) * (-0.1), (eval('true_'+query_name)(normal_distribution)) * 0.1, 500)
-        error = getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(normal_distribution) + (getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(normal_distribution) * np.random.uniform(-0.1, 0.1)) - getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(normal_distribution)
+        #error = np.random.uniform((eval('true_'+query_name)(dataset)) * (-0.1), (eval('true_'+query_name)(dataset)) * 0.1, 500)
+        error = getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(dataset) + (getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(dataset) * np.random.uniform(-0.1, 0.1)) - getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(dataset)
         time_list.append(time.time() - begin_time) # running time
         memory_list.append(process.memory_info().rss) # memory consumption
-        true_result = getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(normal_distribution)
+        true_result = getattr(eval('{library}_attribute'.format(library=experiment_name)),'true_{query}'.format(query=query_name))(dataset)
         err.append(error)
-        relative_err.append(abs(error/true_result))
-        scaled_err.append(abs(error/len(normal_distribution)))
+        relative_err.append(error/true_result)
+        scaled_err.append(error/len(dataset))
     errors_calculation(err=err, relative_err=relative_err, scaled_err=scaled_err, time_list=time_list, memory=memory_list, query=query_name, i=i, library=experiment_name)
         
 ###########################################################################################################

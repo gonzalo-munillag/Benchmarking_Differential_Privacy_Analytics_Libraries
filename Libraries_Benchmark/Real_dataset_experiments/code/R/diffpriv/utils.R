@@ -52,11 +52,7 @@ log_errors <- function(dataset_folder_path, query, i, eps) {
   time_taken <- mean(t$X)
   write.table(time_taken, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/",query,"/results_dataset_",i,"/execution_time.csv"), append = T, row.names = F, col.names=F, eol = "\n")
   
-  # memory consumption
-  #m <- read.csv(paste0(dataset_folder_path,"/diffpriv_micro/",query,"/results_dataset_",i,"/memory/time_eps_",eps,".csv"))
-  #memory <- mean(m$X)
-  #write.table(memory, paste0(dataset_folder_path,"/diffpriv_micro/",query,"/results_dataset_",i,"/memory_consumed.csv"), append = T, row.names = F, col.names=F, eol = "\n")
-}
+  }
 
 
 
@@ -89,11 +85,11 @@ calculate_dp_sum <- function(data, number_of_experiments, dataset_folder_path, q
       error <- true_sum - rr
       write.table(error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/sum/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      relative_error <- (true_sum - rr)/true_sum
+      relative_error <- abs((true_sum - rr)/true_sum)
       #print(relative_error)
       write.table(relative_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/sum/results_dataset_",i,"/relative_error/DP_relative_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      scaled_error <- error/NROW(data)
+      scaled_error <- abs(error/NROW(data))
       write.table(scaled_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/sum/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
     }
@@ -127,10 +123,10 @@ calculate_dp_var <- function(data, number_of_experiments, dataset_folder_path, q
       error <- true_var - rr
       write.table(error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/var/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
-      relative_error <- (true_var - rr)/true_var
+      relative_error <- abs((true_var - rr)/true_var)
       write.table(relative_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/var/results_dataset_",i,"/relative_error/DP_relative_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
 
-      scaled_error = (error)/NROW(data)
+      scaled_error = abs((error)/NROW(data))
       write.table(scaled_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/var/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
     }
@@ -167,11 +163,11 @@ calculate_dp_mean <- function(data, number_of_experiments, dataset_folder_path, 
       #print(error)      
       write.table(error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/mean/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
 
-      relative_error <- (true_mean - rr)/true_mean
+      relative_error <- abs((true_mean - rr)/true_mean)
       #print(paste0('Relative error ',relative_error))
       write.table(relative_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/mean/results_dataset_",i,"/relative_error/DP_relative_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
 
-      scaled_error <- error/NROW(data)
+      scaled_error <- abs(error/NROW(data))
       write.table(scaled_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/mean/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
     }
@@ -204,10 +200,10 @@ calculate_dp_count <- function(data, number_of_experiments, dataset_folder_path,
       #print(NROW(data) - rr)
       write.table(error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/count/results_dataset_",i,"/error/DP_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
 
-      relative_error <- (NROW(data) - rr)/NROW(data)
+      relative_error <- abs((NROW(data) - rr)/NROW(data))
       write.table(relative_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/count/results_dataset_",i,"/relative_error/DP_relative_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n") 
 
-      scaled_error <- error/NROW(data)
+      scaled_error <- abs(error/NROW(data))
       write.table(scaled_error, paste0("~/publication/real_dataset_analysis/micro/diffpriv_simple/count/results_dataset_",i,"/scaled_error/DP_scaled_error_eps_",eps,".csv"), append = T, row.names = F, col.names=F, eol = "\n")
       
     }

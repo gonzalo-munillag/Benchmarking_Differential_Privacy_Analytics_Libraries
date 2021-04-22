@@ -1,43 +1,47 @@
+# Running the Evaluation Code
+- Clone the original repo (`git clone https://github.com/uber-archive/sql-differential-privacy`)
+- The driver to run the evaluation is in
+  `src/main/scala/examples/EvaluationDriver.scala` - replace this file with our file
+- The schema is in `test/resources/schema_eval.yaml`  - replace this file with our file
+- The database is a SQLite3 database in `test_db.db` - put data in this database to change what gets evaluated when you run the experiment (recommended `sqlite')
+- To build the code, use `mvn compile`
+- To run the experiment, use `mvn exec:java -Dexec.mainClass="examples.EvaluationDriver"`
 
-# Benchmarking Differential Privacy Libraries
+# Overview
 
-## How to run it:
+This repository contains the updated implementation of the Chorus
+system for differential privacy, to accompany the following paper:
 
+- **CHORUS: a Programming Framework for Building Scalable Differential
+Privacy Mechanisms.** Noah Johnson, Joseph P. Near, Joseph
+M. Hellerstein, Dawn Song. *EuroS&P 2020*.
 
+This is an updated release of Chorus.  The original release of Chorus
+is available
+[here](https://github.com/uber-archive/sql-differential-privacy); see
+the original repository and the paper for more documentation.
 
-## Benchmarked libraries:
+## Building & Running
 
-1. IBM-diffprivlib
-2. OpenDP-Smartnoise
-3. Openmined-PyDP
-4. diffpriv-R
-5. TensorFlow DP
-6. MIT-PrivateMultiWeight
-7. CHORUS DP
-8. GUPT
-9. PINQ
+This framework is written in Scala and built using Maven. The code has been tested on Mac OS X and Linux. To build the code:
 
-Each folder contains a executable to perform basic queries.
+```
+$ mvn package
+```
 
-We compare them on the basis of there purpose, composition and efficiency.
-First we evaluate them for single queries on Normal distributions then we used them for our real world use-case (Eco-Friendly Driving).
+## Running Examples
 
-## Files contained
+The file `examples/MechanismExamples.scala` contains several examples
+from the paper. To run the examples, after building Chorus:
 
-**epsilon.pkl**
+```
+mvn exec:java -Dexec.mainClass="examples.MechanismExamples"
+```
 
-It conatins... it was created with file ...
+## License
 
-## Sensible Comparison
+This project is released under the MIT License.
 
-Libraries | Count | Sum | Mean | Std | Var |
---------|-------|-----|------|-----|-----|
-IBM-diffprivlib | yes | yes | yes | yes | yes |
-OpenDP-whitenoise | yes |	yes | yes | no	| yes |
-Benchmark* | yes |	yes	| yes |	yes | yes |
-OpenMined-PyDP | yes	| yes	| yes | yes | yes |
-PINQ | yes | yes | yes | no | no |
-CHORUS-DP | yes | yes | yes | no | no |
-diffpriv | yes | yes | yes | yes | yes |
+## Contact Information
 
- 
+This code is maintained by [Joe Near](http://www.uvm.edu/~jnear/).
