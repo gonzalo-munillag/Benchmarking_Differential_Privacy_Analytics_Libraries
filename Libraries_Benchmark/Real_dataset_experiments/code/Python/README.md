@@ -1,11 +1,11 @@
 
-# (Python) Differential Privacy Libraries Analysis for Real Datasets
+# (Python) Differential privacy libraries benchmark on real datasets
 
 Step 1 = To extract single column out of the adult dataset and education dataset, modify and run `single_column_csv.py`
 
 ## Running the Code
 
-Step 2 = extract 'micro.zip' in same folder.
+Step 2 = unzip 'micro.zip' in the same folder.
 
 Step 3 = run `python3 main.py`.
 
