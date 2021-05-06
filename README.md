@@ -79,7 +79,7 @@ Adult Dataset: Age (Variance Query)
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var_time/var_time-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/legends-1.png" alt="drawing" width="300"/>
 
-#### Memery consumption
+#### Memory consumption
 
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count_memory/count_memory-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum_memory/sum_memory-1.png" alt="drawing" width="300"/>
