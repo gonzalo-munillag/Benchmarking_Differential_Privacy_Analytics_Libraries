@@ -40,3 +40,33 @@ Contain code to calculate `Execution Time` and `Memory Consumed.`
 
 
 - To run the code, kindly read the `README.md` file of each sub-folders.
+
+### Results
+
+These are some of the outputs of our benchmark:
+
+#### Utility on synthetic datasets
+
+Count
+
+Sum
+
+Mean
+
+Var
+
+#### Utility on real datasets
+
+Count
+
+Sum
+
+Mean
+
+Var
+
+#### Execution time
+
+#### Memery consumption
+
+
