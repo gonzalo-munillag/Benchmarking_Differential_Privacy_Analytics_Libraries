@@ -53,13 +53,16 @@ These are some of the outputs of our benchmark:
 #### Utility on synthetic datasets
 
 Count
-![Count](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/count/set_5.pdf)
+![click_here](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/count/set_5.pdf)
 
 Sum
+![click_here](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/sum/set_5.pdf)
 
 Mean
+![click_here](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/mean/set_5.pdf)
 
 Var
+![click_here](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/var/set_5.pdf)
 
 #### Utility on real datasets
 
