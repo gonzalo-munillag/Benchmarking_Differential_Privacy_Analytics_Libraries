@@ -75,6 +75,7 @@ Education Dataset: Absences (Count Query)
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum_time/sum_time-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_time/mean_time-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var_time/var_time-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/legends-1.png" alt="drawing" width="300"/>
 
 #### Memery consumption
 
@@ -82,3 +83,4 @@ Education Dataset: Absences (Count Query)
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum_memory/sum_memory-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_memory/mean_memory-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var_memory/var_memory-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/legends-1.png" alt="drawing" width="300"/>
