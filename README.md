@@ -43,4 +43,4 @@ We are evaluating five Differential Privacy Libraries for:
 Contain code to calculate `Execution Time` and `Memory Consumed`.
 
 
-To run the code kindly read the `README.md` file in all sub-folders.
+- To run the code kindly read the `README.md` file in all sub-folders.
