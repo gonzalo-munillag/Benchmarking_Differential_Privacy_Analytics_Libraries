@@ -1,4 +1,4 @@
-# (Scala) Differential Privacy Libraries Analysis for Sythetic Datasets
+# (Scala) Differential privacy libraries benchmarked on sythetic datasets
 
 EvaluationDriver.scala
 
