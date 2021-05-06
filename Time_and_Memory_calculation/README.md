@@ -1,11 +1,11 @@
 
-### Time and Memory Calcualtion of Differential Privacy Libraries 
+### Execution time and memory consumption measuring of the selected differential privacy libraries 
 
 ** Run `dataset_generation.py` to create datasets
 
 (line 21: make sure to specify path where you want to save all 7 synthetic datasets.)
 
-Step 1: extract `micro.zip`
+Step 1: unzip `micro.zip`
 
 Step 2: open python folder and read `README.md`.
 
