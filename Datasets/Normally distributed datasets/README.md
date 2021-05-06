@@ -1,8 +1,4 @@
 
-# Benchmarking Differential Privacy Libraries
+# Normally Distributed Synthetic Datasets
 
-## Benchmarking Differential Privacy Libraries
-
-### Benchmarking Differential Privacy Libraries
-
-#### Benchmarking Differential Privacy Libraries
+In this repository you may find the datasets for direct download or the code we used to generate them.
