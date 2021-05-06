@@ -57,7 +57,7 @@ Count
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var-1.png" alt="drawing" width="300"/>
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean/mean-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
 
 
 #### Utility on real datasets
