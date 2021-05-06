@@ -12,7 +12,7 @@ Step 1 = open `utils.R`
 - Line 8: give path to the `utils.R` file.
 - Line 10: specify 'dataset_folder_path' and 'query'
 
-### Code running
+### Running the code
 
 run `Rscript main.R`
 
@@ -30,7 +30,7 @@ Step 1 = open `utils_sensitivity_sampler.R`
 - Line 8: give path to the `utils_sensitivity_sampler.R` file.
 - Line 10: specify 'dataset_folder_path' and 'query'
 
-### Code running
+### Running the code
 
 run `Rscript main.R`
 
