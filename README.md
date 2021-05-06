@@ -53,6 +53,7 @@ These are some of the outputs of our benchmark:
 #### Utility on synthetic datasets
 
 Count
+![Count](Benchmarking_Differential_Privacy_Analytics_Libraries/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/count/set_5.pdf)
 
 Sum
 
