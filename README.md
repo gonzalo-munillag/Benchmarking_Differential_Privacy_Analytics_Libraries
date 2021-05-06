@@ -67,7 +67,7 @@ Adult Dataset: Age (Variance Query)
 
 Education Dataset: Absences (Count Query) 
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/age_var/age_var-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/absences_count/absences_count-1.png" alt="drawing" width="300"/>
 
 #### Execution time
 
