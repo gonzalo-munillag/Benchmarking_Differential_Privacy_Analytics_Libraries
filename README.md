@@ -3,9 +3,8 @@
 
 
 ## Overview
-This repository contains the implementation of the paper.
+This repository contains the implementation of the paper. We are evaluating five Differential Privacy Libraries for:
 
-We are evaluating five Differential Privacy Libraries for:
 1) Synthetic Datasets
 2) Real Datasets
 
