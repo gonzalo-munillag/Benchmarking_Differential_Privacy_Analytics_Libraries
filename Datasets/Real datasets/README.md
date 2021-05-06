@@ -1,4 +1,4 @@
-# Link of the datasets.
+# Links to datasets.
 
 ### Education
 https://archive.ics.uci.edu/ml/datasets/Student+Performance
