@@ -52,17 +52,17 @@ These are some of the outputs of our benchmark:
 
 #### Utility on synthetic datasets
 
+Count
+![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/count/set_5.pdf)
 
-![Count](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/count/set_5.pdf)
+Sum
+![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/sum/set_5.pdf)
 
+Mean
+![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/mean/set_5.pdf)
 
-![Sum](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/sum/set_5.pdf)
-
-
-![Mean](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/mean/set_5.pdf)
-
-
-![Var](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/var/set_5.pdf)
+Var
+![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/var/set_5.pdf)
 
 #### Utility on real datasets
 
