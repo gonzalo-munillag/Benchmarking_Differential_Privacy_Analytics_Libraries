@@ -1,5 +1,5 @@
 
-# (R) Differential Privacy Libraries Analysis for Sythetic Datasets
+# (R) Differential privacy libraries benchmark on sythetic datasets
 
 ## Folder `diffpriv`
 Step 1 = open `utils.R`
