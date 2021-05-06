@@ -53,17 +53,12 @@ These are some of the outputs of our benchmark:
 #### Utility on synthetic datasets
 
 Count
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png" alt="drawing" width="200"/>
-![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png | width=100)
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var-1.png" alt="drawing" width="300"/>
 
-Sum
-![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/sum/set_5.pdf)
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean/mean-1.png" alt="drawing" width="300"/>
 
-Mean
-![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/mean/set_5.pdf)
-
-Var
-![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/var/set_5.pdf)
 
 #### Utility on real datasets
 
