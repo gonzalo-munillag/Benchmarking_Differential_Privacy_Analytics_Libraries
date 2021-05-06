@@ -1,7 +1,7 @@
 
 ### Differential Privacy Libraries' analytics queries (Count, sum, mean, var) executed on Synthetic Datasets
 
-Step 1: extract `micro.zip`
+Step 1: Unzip `micro.zip`
 
 Step 2: open python folder and read `README.md`.
 
