@@ -53,6 +53,7 @@ These are some of the outputs of our benchmark:
 #### Utility on synthetic datasets
 
 Count
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png" alt="drawing" width="200"/>
 ![set_5](/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png | width=100)
 
 Sum
