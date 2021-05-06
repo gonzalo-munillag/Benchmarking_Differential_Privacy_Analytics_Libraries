@@ -15,4 +15,11 @@ Step 1: open `memory_plot.py`
 - Line 11: Specify `query` (for `var` you have to comment the code of `Chorus`)
 
 
+## Std Scaled Error VS Scale Plotting
+
+Step 1: open `std_scaled_error_vs_scale.py`
+- Line 10, 11: Specify path to results folder
+- Line 11: Specify `query` (for `var` you have to comment the code of `Chorus`)
+
+
 
