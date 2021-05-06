@@ -1,5 +1,5 @@
 
-# (R) Differential Privacy Libraries Analysis for Real Datasets
+# (R) Differential privacy libraries benchmark on real datasets
 
 ## Folder `diffpriv`
 
