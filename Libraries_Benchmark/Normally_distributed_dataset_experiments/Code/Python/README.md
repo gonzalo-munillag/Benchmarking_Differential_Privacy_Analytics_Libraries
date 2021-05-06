@@ -3,9 +3,9 @@
 
 ### synthetic dataset generation
 
-Step 1 = run script `python3 dataset_generation.py`
+Step 1 = run script `python3 dataset_generation.py` in this [folder](https://github.com/gonzalo-munillag/Benchmarking_Differential_Privacy_Analytics_Libraries/tree/main/Datasets/Normally%20distributed%20datasets/Generation)
 
-(line 21: make sure to specify path where you want to save all 27 synthetic datasets.)
+(line 21: make sure to specify path where you want to save all the 27 synthetic datasets.)
 
 ### Running the Code
 
