@@ -21,23 +21,28 @@ This repository contains the implementation of the paper. We are evaluating five
 
 ### Datasets
 
+We have employed synthetic datasets to cover the breadth of possible features a dataset may have and real datasets to validate the libraries in a real setting. 
+
 1) Normally distributed datasets
 2) Real Datasets
 
 ### Bugs
+
+We include two of the bugs we encountered in some of the libraries while performing this benchmark.
 
 1) Whitenoise (v 1.0.3)
 2) diffpriv_count_query (sensitivity sampler)
 
 ### Libraries_Benchmark
 
+In these folders, you may find the code to replicate our benchmark.
+
 1) Normally_distributed_dataset_experiments
 2) Real_dataset_experiments
 
 ### Time_and_Memory_calculation
 
-Contain code to calculate `Execution Time` and `Memory Consumed.`
-
+Contains code to calculate `Execution Time` and `Memory Consumed` of the five libraries.
 
 - To run the code, kindly read the `README.md` file of each sub-folders.
 
