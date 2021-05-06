@@ -52,23 +52,23 @@ These are some of the outputs of our benchmark:
 
 #### Utility on synthetic datasets
 
-Count
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var-1.png" alt="drawing" width="300"/>
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
-
+<p align="center">
+  <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
+</p>
 
 #### Utility on real datasets
 
-Count
+Adult Dataset: Age (Variance Query) 
 
-Sum
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/age_var/age_var-1.png" alt="drawing" width="300"/>
 
-Mean
+Education Dataset: Absences (Count Query) 
 
-Var
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/age_var/age_var-1.png" alt="drawing" width="300"/>
 
 #### Execution time
 
