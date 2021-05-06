@@ -1,4 +1,4 @@
-# (Scala) Differential Privacy Libraries Analysis for Sythetic Datasets
+# (Scala) Execution time and memory consumption measuring of the selected differential privacy libraries 
 
 EvaluationDriver.scala
 
