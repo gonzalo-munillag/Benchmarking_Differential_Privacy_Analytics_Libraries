@@ -1,8 +1,2 @@
 
-# Benchmarking Differential Privacy Libraries
-
-## Benchmarking Differential Privacy Libraries
-
-### Benchmarking Differential Privacy Libraries
-
-#### Benchmarking Differential Privacy Libraries
+### open diffpriv folder and read `README.md`

@@ -1,43 +1,18 @@
 
-# Benchmarking Differential Privacy Libraries
+# (Python) Differential Privacy Libraries Analysis for Time and Memory
 
-## How to run it:
+## synthetic dataset generation
 
+Step 1 = run script `python3 dataset_generation.py`
+(line 21: make sure to specify path where you want to save all 27 synthetic datasets.)
 
+## Running the Code
 
-## Benchmarked libraries:
+Step 2 = extract 'micro.zip' in same folder.
+Step 3 = specify 'dataset_folder_path', 'library_name', 'query' in `main.py`.
+Step 4 = run `python3 main.py`
 
-1. IBM-diffprivlib
-2. OpenDP-Smartnoise
-3. Openmined-PyDP
-4. diffpriv-R
-5. TensorFlow DP
-6. MIT-PrivateMultiWeight
-7. CHORUS DP
-8. GUPT
-9. PINQ
+- All the results will get save in micro subfolders.
 
-Each folder contains a executable to perform basic queries.
-
-We compare them on the basis of there purpose, composition and efficiency.
-First we evaluate them for single queries on Normal distributions then we used them for our real world use-case (Eco-Friendly Driving).
-
-## Files contained
-
-**epsilon.pkl**
-
-It conatins... it was created with file ...
-
-## Sensible Comparison
-
-Libraries | Count | Sum | Mean | Std | Var |
---------|-------|-----|------|-----|-----|
-IBM-diffprivlib | yes | yes | yes | yes | yes |
-OpenDP-whitenoise | yes |	yes | yes | no	| yes |
-Benchmark* | yes |	yes	| yes |	yes | yes |
-OpenMined-PyDP | yes	| yes	| yes | yes | yes |
-PINQ | yes | yes | yes | no | no |
-CHORUS-DP | yes | yes | yes | no | no |
-diffpriv | yes | yes | yes | yes | yes |
 
  

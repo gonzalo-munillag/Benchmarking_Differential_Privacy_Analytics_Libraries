@@ -1,47 +1,16 @@
 # Running the Evaluation Code
-- Clone the original repo (`git clone https://github.com/uber-archive/sql-differential-privacy`)
-- The driver to run the evaluation is in
-  `src/main/scala/examples/EvaluationDriver.scala` - replace this file with our file
-- The schema is in `test/resources/schema_eval.yaml`  - replace this file with our file
-- The database is a SQLite3 database in `test_db.db` - put data in this database to change what gets evaluated when you run the experiment (recommended `sqlite')
-- To build the code, use `mvn compile`
-- To run the experiment, use `mvn exec:java -Dexec.mainClass="examples.EvaluationDriver"`
 
-# Overview
+Step 1: Clone the original repo (`git clone https://github.com/uber-archive/sql-differential-privacy`)
+Step 2: The driver to run the evaluation is in `src/main/scala/examples/EvaluationDriver.scala` - replace this file with our file
+Step 3: The schema is in `test/resources/schema_eval.yaml`  - replace this file with our file
+Step 4: The database is a SQLite3 database in `test_db.db` - put data in this database to change what gets evaluated when you run the experiment (recommended `sqlite')
+Step 5: To build the code, use `mvn compile`
+Step 6: To run the experiment, use `mvn exec:java -Dexec.mainClass="examples.EvaluationDriver"`
 
-This repository contains the updated implementation of the Chorus
-system for differential privacy, to accompany the following paper:
+** in `src/main/scala/examples/EvaluationDriver.scala` you have to update:
+	  Line 48: val dataset_num = "grade_education"  %% update it manually for each attribute (age_adult, hrs_adult, absences_adult, grade_adult)
+  	  Line 49: val upr = 20 			%% age_adult=100, hrs_adult=80, absences_adult=93, grade_adult=20
+  	  Line 50: val lwr = 0
+  	  Line 51: val result_dataset = 4		%%age_adult=1, hrs_adult=2, absences_adult=3, grade_adult=4
 
-- **CHORUS: a Programming Framework for Building Scalable Differential
-Privacy Mechanisms.** Noah Johnson, Joseph P. Near, Joseph
-M. Hellerstein, Dawn Song. *EuroS&P 2020*.
-
-This is an updated release of Chorus.  The original release of Chorus
-is available
-[here](https://github.com/uber-archive/sql-differential-privacy); see
-the original repository and the paper for more documentation.
-
-## Building & Running
-
-This framework is written in Scala and built using Maven. The code has been tested on Mac OS X and Linux. To build the code:
-
-```
-$ mvn package
-```
-
-## Running Examples
-
-The file `examples/MechanismExamples.scala` contains several examples
-from the paper. To run the examples, after building Chorus:
-
-```
-mvn exec:java -Dexec.mainClass="examples.MechanismExamples"
-```
-
-## License
-
-This project is released under the MIT License.
-
-## Contact Information
-
-This code is maintained by [Joe Near](http://www.uvm.edu/~jnear/).
+** You also have to make cahnges in `test/resources/schema_eval.yaml` accordingly.

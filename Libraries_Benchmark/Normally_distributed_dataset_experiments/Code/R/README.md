@@ -1,43 +1,37 @@
 
-# Benchmarking Differential Privacy Libraries
+# (R) Differential Privacy Libraries Analysis for Sythetic Datasets
 
-## How to run it:
+## Folder `diffpriv`
+Step 1 = open `utils.R`
+- Line 7: specify `path_to_python`
+- Line 13: specify location of `epsilon.pkl` (you can find it in python folder)
+- Line 15: specify path to `micro` folder in `result_folder_location` (the `micro.zip` which you extracted to store results of python libraries)
+- Line 216: specify path to synthetic dataset folder.
+
+`main.R`
+- Line 8: give path to the `utils.R` file.
+- Line 10: specify 'dataset_folder_path' and 'query'
+
+### Code running
+
+run `Rscript main.R`
+
+(run it for all the queries. Results will get save in `micro/diffpriv_simple/`)
 
 
+## Folder `diffpriv_with_sensitivity_sampler`
+Step 1 = open `utils_sensitivity_sampler.R`
+- Line 7: specify `path_to_python`
+- Line 13: specify location of `epsilon.pkl` (you can find it in python folder)
+- Line 15: specify path to `micro` folder in `result_folder_location` (the `micro.zip` which you extracted to store results of python libraries)
+- Line 212: specify path to synthetic dataset folder.
 
-## Benchmarked libraries:
+`main.R`
+- Line 8: give path to the `utils_sensitivity_sampler.R` file.
+- Line 10: specify 'dataset_folder_path' and 'query'
 
-1. IBM-diffprivlib
-2. OpenDP-Smartnoise
-3. Openmined-PyDP
-4. diffpriv-R
-5. TensorFlow DP
-6. MIT-PrivateMultiWeight
-7. CHORUS DP
-8. GUPT
-9. PINQ
+### Code running
 
-Each folder contains a executable to perform basic queries.
+run `Rscript main.R`
 
-We compare them on the basis of there purpose, composition and efficiency.
-First we evaluate them for single queries on Normal distributions then we used them for our real world use-case (Eco-Friendly Driving).
-
-## Files contained
-
-**epsilon.pkl**
-
-It conatins... it was created with file ...
-
-## Sensible Comparison
-
-Libraries | Count | Sum | Mean | Std | Var |
---------|-------|-----|------|-----|-----|
-IBM-diffprivlib | yes | yes | yes | yes | yes |
-OpenDP-whitenoise | yes |	yes | yes | no	| yes |
-Benchmark* | yes |	yes	| yes |	yes | yes |
-OpenMined-PyDP | yes	| yes	| yes | yes | yes |
-PINQ | yes | yes | yes | no | no |
-CHORUS-DP | yes | yes | yes | no | no |
-diffpriv | yes | yes | yes | yes | yes |
-
- 
+(run it for all the queries. Results will get save in `micro/diffpriv/`)

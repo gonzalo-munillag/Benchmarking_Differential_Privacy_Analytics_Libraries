@@ -47,7 +47,6 @@ object EvaluationDriver extends App {
     min
   }
 
-  //val dataset_num = "dataset_0"
 
   val results: mutable.MutableList[Double] = mutable.MutableList()
   val lines = fromFile("normal_distribution_datasets//" + dataset_num + ".csv").getLines
@@ -111,12 +110,12 @@ object EvaluationDriver extends App {
     scale_err_count.+= (((true_count - dp_count)/true_count).abs)
     }
     println("COUNT query mean relative error: " + meanElements(relative_err_count))
-    val guestFile1 = new PrintWriter(new FileWriter("results//chorus//count//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))
+    val guestFile1 = new PrintWriter(new FileWriter("micro//chorus//count//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))
     guestFile1.println(meanElements(relative_err_count))
     guestFile1.close()
 
     println("COUNT query Std scaled error: " + StandardDeviation(scale_err_count))
-    val guestFile2 = new PrintWriter(new FileWriter("results//chorus//count//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv", true))
+    val guestFile2 = new PrintWriter(new FileWriter("micro//chorus//count//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv", true))
     guestFile2.println(StandardDeviation(scale_err_count))
     guestFile2.close()
 
@@ -138,11 +137,11 @@ object EvaluationDriver extends App {
     println("SUM query mean relative error: " + meanElements(relative_err_sum))
     println("SUM query Std scaled error: " + StandardDeviation(scale_err_sum))
 
-    val guestFile3 = new PrintWriter(new FileWriter("results//chorus//sum//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))    
+    val guestFile3 = new PrintWriter(new FileWriter("micro//chorus//sum//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))    
     guestFile3.println(meanElements(relative_err_sum))
     guestFile3.close()
 
-    val guestFile4 = new PrintWriter(new FileWriter("results//chorus//sum//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv", true))   
+    val guestFile4 = new PrintWriter(new FileWriter("micro//chorus//sum//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv", true))   
     guestFile4.println(StandardDeviation(scale_err_sum)) 
     guestFile4.close()
 
@@ -165,11 +164,11 @@ object EvaluationDriver extends App {
     println("AVG query mean relative error: " + meanElements(relative_err_avg)) 
     println("AVG query Std scaled error: " + StandardDeviation(scale_err_avg))
 
-    val guestFile5 = new PrintWriter(new FileWriter("results//chorus//mean//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))
+    val guestFile5 = new PrintWriter(new FileWriter("micro//chorus//mean//results_" + dataset_num + "//mean_relative_error//DP_mean_relative_error.csv", true))
     guestFile5.println(meanElements(relative_err_avg))                                                                  
     guestFile5.close()
                                                                                                                              
-    val guestFile6 = new PrintWriter(new FileWriter("results//chorus//mean//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv",true))
+    val guestFile6 = new PrintWriter(new FileWriter("micro//chorus//mean//results_" + dataset_num + "//std_scaled_error//DP_std_scaled_error.csv",true))
     guestFile6.println(StandardDeviation(scale_err_avg))
     guestFile6.close()
 

@@ -1,8 +1,12 @@
 
-# Benchmarking Differential Privacy Libraries
+# Differential Privacy Libraries Evaluation with Synthetic Datasets
 
-## Benchmarking Differential Privacy Libraries
+Step 1: extract `micro.zip`
+Step 2: open python folder and read `README.md`.
+Step 3: run all the code in `Python` folder then run the code in `R`.
+Step 4: read the `README.md` in Scala folder and run the code accordingly.
 
-### Benchmarking Differential Privacy Libraries
+** make sure that extracted `micro` folder is placed in such way that all folders (python, R, Scala) code results can be saved in it.
 
-#### Benchmarking Differential Privacy Libraries
+Step 5: open `Plotting` folder and read `README.md`
+

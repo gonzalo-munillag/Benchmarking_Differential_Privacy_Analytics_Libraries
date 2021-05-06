@@ -30,12 +30,12 @@ for(f in 0:number_of_csv_file){
       Rprof(tf <- paste0("Rprof_",f,".out"), line.profiling = TRUE,
             gc.profiling = TRUE, memory.profiling = TRUE)
       for (i in 0:100){
-        target <- function(X) var(X)
+        target <- function(X) var(X) #NROW (count query), sum, mean, var
         mech <- DPMechLaplace(target = target)
-        #target <- function(X) NROW(X)
-        #sens = (maximum - minimum)/NROW(data)
-        sens = (((maximum - minimum)/NROW(data))^2)*(NROW(data)-1)
-        #sens = maximum -minimum
+        #sens = 1 #count
+        #sens = (maximum - minimum)/NROW(data) #mean
+        sens = (((maximum - minimum)/NROW(data))^2)*(NROW(data)-1) #var
+        #sens = maximum -minimum #sum
         mechanism <- DPMechLaplace(target = target, sensitivity = sens, dims = 1)
         pparams <- DPParamsEps(epsilon = eps) 
         r <- releaseResponse(mechanism, privacyParams = pparams, X=normal_distribution)

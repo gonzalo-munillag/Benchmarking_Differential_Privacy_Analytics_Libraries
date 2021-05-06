@@ -47,7 +47,6 @@ object EvaluationDriver extends App {
     min
   }
 
-  //val dataset_num = "dataset_0"
 
   val results: mutable.MutableList[Double] = mutable.MutableList()
   val lines = fromFile("normal_distribution_datasets//" + dataset_num + ".csv").getLines
