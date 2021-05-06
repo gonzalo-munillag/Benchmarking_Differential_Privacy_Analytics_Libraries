@@ -12,9 +12,13 @@ We are evaluating five Differential Privacy Libraries for:
 ### Differential Privacy Libraries are as follows:
 
 1: (Python) IBM-diffprivlib. https://github.com/IBM/differential-privacy-library
+
 2: (Python) OpenMined-PyDp. https://github.com/OpenMined/PyDP
+
 3: (Python) OpenDP-SmartNoise. https://github.com/opendp/smartnoise-core
+
 4: (R) diffpriv. https://github.com/brubinstein/diffpriv
+
 5: (Scala) Chorus. https://github.com/uvm-plaid/chorus
 
 ## Folders in Repository
