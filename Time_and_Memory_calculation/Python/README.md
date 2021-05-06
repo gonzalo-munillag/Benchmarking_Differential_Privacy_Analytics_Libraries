@@ -1,5 +1,5 @@
 
-# (Python) Differential Privacy Libraries Analysis for Time and Memory
+# (Python) Execution time and memory consumption measuring of the selected differential privacy libraries 
 
 ## Synthetic dataset generation
 
@@ -9,7 +9,7 @@ Step 1 = run script `python3 dataset_generation.py`
 
 ## Running the Code
 
-Step 2 = extract 'micro.zip' in same folder.
+Step 2 = unzip 'micro.zip' in same folder.
 
 Step 3 = specify 'dataset_folder_path', 'library_name', 'query' in `main.py`.
 
