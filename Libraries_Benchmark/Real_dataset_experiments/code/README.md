@@ -1,5 +1,5 @@
 
-### Differential Privacy Libraries Evaluation with Real Datasets
+### Differential privacy libraries benchmark of analytics queries (Count, sum, mean, var) over real datasets
 
 Step 1: extract `micro.zip`
 
