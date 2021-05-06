@@ -1,5 +1,5 @@
 
-# (R) Differential Privacy Libraries Analysis for Sythetic Datasets
+# (R) Execution time and memory consumption measuring of the selected differential privacy libraries 
 
 ## Folder `diffpriv`
 
