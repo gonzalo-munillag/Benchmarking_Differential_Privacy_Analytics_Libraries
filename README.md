@@ -56,9 +56,8 @@ These are some of the outputs of our benchmark:
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum-1.png" alt="drawing" width="300"/>
 <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var-1.png" alt="drawing" width="300"/>
 
-<p align="center">
-  <img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
-</p>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
+
 
 #### Utility on real datasets
 
@@ -72,6 +71,14 @@ Education Dataset: Absences (Count Query)
 
 #### Execution time
 
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count_time/count_time-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum_time/sum_time-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_time/mean_time-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var_time/var_time-1.png" alt="drawing" width="300"/>
+
 #### Memery consumption
 
-
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count_memory/count_memory-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum_memory/sum_memory-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_memory/mean_memory-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var_memory/var_memory-1.png" alt="drawing" width="300"/>
