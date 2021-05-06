@@ -1,4 +1,4 @@
-### We are evaluating five Differentially Privacy Libraries for `synthetic datasets` and `real datasets`.
+### We are benchmarking five differential privacy libraries' analytics queries (Count, sum, mean, var) executed on `synthetic datasets` and `real datasets`.
 
 1) IBM-diffprivlib
 2) OpenDP-SmartNoise
