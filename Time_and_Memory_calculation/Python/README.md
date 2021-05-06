@@ -1,7 +1,7 @@
 
 # (Python) Differential Privacy Libraries Analysis for Time and Memory
 
-## synthetic dataset generation
+## Synthetic dataset generation
 
 Step 1 = run script `python3 dataset_generation.py`
 
