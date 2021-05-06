@@ -3,12 +3,9 @@
 
 
 ## Overview
-This repository contains the implementation of the paper. We are evaluating five Differential Privacy Libraries for:
+This repository contains the implementation of the paper. We are evaluating five differential privacy libraries' analytics queries (Count, sum, mean, var) on synthetic and real datasets.
 
-1) Synthetic Datasets
-2) Real Datasets
-
-### Differential Privacy Libraries are as follows:
+### Differential Privacy Libraries:
 
 1: (Python) IBM-diffprivlib. https://github.com/IBM/differential-privacy-library
 
@@ -39,7 +36,7 @@ This repository contains the implementation of the paper. We are evaluating five
 
 ### Time_and_Memory_calculation
 
-Contain code to calculate `Execution Time` and `Memory Consumed`.
+Contain code to calculate `Execution Time` and `Memory Consumed.`
 
 
-- To run the code kindly read the `README.md` file in all sub-folders.
+- To run the code, kindly read the `README.md` file of each sub-folders.
