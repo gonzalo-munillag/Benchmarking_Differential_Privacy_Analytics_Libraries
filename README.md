@@ -3,7 +3,7 @@
 
 ## Contributors
 
-Development: [Aitsam Muhammad](https://github.com/aitsam12)
+Development: [Aitsam Muhammad](https://github.com/aitsam12)   
 Code supervision, experiment design, and scientific work: [Gonzalo Munilla Garrido](https://github.com/gonzalo-munillag)
 
 ## Overview
