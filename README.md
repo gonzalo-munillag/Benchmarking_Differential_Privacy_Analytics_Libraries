@@ -1,6 +1,10 @@
 
 # Do I Get the Privacy I Need? Benchmarking Utility in Differential Privacy Libraries
 
+## Contributors
+
+Development: [Aitsam Muhammad](https://github.com/aitsam12)
+Code supervision, experiment design, and scientific work: [Gonzalo Munilla Garrido](https://github.com/gonzalo-munillag)
 
 ## Overview
 This repository contains the implementation of the paper. We are evaluating five differential privacy libraries' analytics queries (Count, sum, mean, var) on synthetic and real datasets.
