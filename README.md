@@ -7,7 +7,7 @@ Development: [Aitsam Muhammad](https://github.com/aitsam12)
 Code supervision, experiment design, and scientific work: [Gonzalo Munilla Garrido](https://github.com/gonzalo-munillag)
 
 ## Overview
-This repository contains the implementation of the paper. We are evaluating five differential privacy libraries' analytics queries (Count, sum, mean, var) on synthetic and real datasets.
+This repository contains the implementation of the paper "Do I Get the Privacy I Need? Benchmarking Utility in Differential Privacy Libraries". We are evaluating five differential privacy libraries' analytics queries (Count, sum, mean, var) on synthetic and real datasets across five open-source libraries.
 
 ### Differential Privacy Libraries:
 
@@ -27,7 +27,7 @@ This repository contains the implementation of the paper. We are evaluating five
 
 We have employed synthetic datasets to cover the breadth of possible features a dataset may have and real datasets to validate the libraries in a real setting. 
 
-1) Normally distributed datasets
+1) Skew-normal distributed datasets
 2) Real Datasets
 
 ### Bugs
