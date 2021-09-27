@@ -128,7 +128,7 @@ def plots_with_sizes(result_folder, query, sets, first_dataset, second_dataset, 
     #################   MEAN RELATIVE ERROR  ############################
     ax2 = plt.subplot(gs1[0,1])
 
-    ax2.plot(x2, abs(IBM_mean_relative_error_0)*100, "o", markeredgecolor='k', mfc='none', label="scale = 1000")
+    ax2.plot(x2, abs(IBM_mean_relative_error_0)*100, "o", markeredgecolor='k', mfc='none', label="Size = 1000")
     ax2.plot(epsilon, abs(IBM_mean_relative_error_0)*100, color = 'xkcd:orangish red')
     ax2.plot(x2, abs(SmartNoise_mean_relative_error_0)*100, "o", markeredgecolor='k', mfc='none')
     ax2.plot(epsilon, abs(SmartNoise_mean_relative_error_0)*100, color = 'xkcd:moss green')
@@ -143,7 +143,7 @@ def plots_with_sizes(result_folder, query, sets, first_dataset, second_dataset, 
     #ax2.plot(x2, [float(additive_noise_mean_relative_error_0[0])*100]*73 , "o", markeredgecolor='k', mfc='none')
     #ax2.plot(epsilon, [float(additive_noise_mean_relative_error_0[0])*100]*73, color = 'k')
 
-    ax2.plot(x2, abs(IBM_mean_relative_error_1)*100, "s", markeredgecolor='k',mfc='none', label="scale = 10000")
+    ax2.plot(x2, abs(IBM_mean_relative_error_1)*100, "s", markeredgecolor='k',mfc='none', label="Size = 10000")
     ax2.plot(epsilon, abs(IBM_mean_relative_error_1)*100, color = 'xkcd:orangish red')
     ax2.plot(x2, abs(SmartNoise_mean_relative_error_1)*100, "s", markeredgecolor='k',mfc='none')
     ax2.plot(epsilon, abs(SmartNoise_mean_relative_error_1)*100, color = 'xkcd:moss green')
@@ -159,7 +159,7 @@ def plots_with_sizes(result_folder, query, sets, first_dataset, second_dataset, 
     #ax2.plot(epsilon, [float(additive_noise_mean_relative_error_1[0])*100]*73, color = 'k')
 
 
-    ax2.plot(x2, abs(IBM_mean_relative_error_2)*100, "v", markeredgecolor='k',mfc='none', label="scale = 100000")
+    ax2.plot(x2, abs(IBM_mean_relative_error_2)*100, "v", markeredgecolor='k',mfc='none', label="Size = 100000")
     ax2.plot(epsilon, abs(IBM_mean_relative_error_2)*100, color = 'xkcd:orangish red')
     ax2.plot(x2, abs(SmartNoise_mean_relative_error_2)*100, "v", markeredgecolor='k',mfc='none')
     ax2.plot(epsilon, abs(SmartNoise_mean_relative_error_2)*100, color = 'xkcd:moss green')
@@ -176,7 +176,7 @@ def plots_with_sizes(result_folder, query, sets, first_dataset, second_dataset, 
 
 
     ax2.set_xlabel('ε', fontsize = 18)
-    ax2.set_ylabel('Sample Mean of the \n Absolute Relative Error [%]', fontsize = 28)
+    ax2.set_ylabel('Sample Mean of the \n Relative Error [%]', fontsize = 28)
 
     
     #ax1.legend(prop={'size': 19}, loc="lower center", bbox_to_anchor=(1.05, -0.59), frameon=False, ncol=2, handletextpad=0.2, handlelength=1, columnspacing=0.5)
@@ -192,23 +192,23 @@ def plots_with_sizes(result_folder, query, sets, first_dataset, second_dataset, 
     if query == 'count':
         ax1.set_ylim(10**-8, 10**3)
         if sets == 1:
-            figure.suptitle('Count Query (Std = 50, Skew = 0)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 50, Skew = 0)', fontsize=28)
         if sets == 2:
-            figure.suptitle('Count Query (Std = 250, Skew = 0)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 250, Skew = 0)', fontsize=28)
         if sets == 3:
-            figure.suptitle('Count Query (Std = 500, Skew = 0)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 500, Skew = 0)', fontsize=28)
         if sets == 4:
-            figure.suptitle('Count Query (Std = 50, Skew = 5)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 50, Skew = 5)', fontsize=28)
         if sets == 5:
-            figure.suptitle('Count Query (Std = 250, Skew = 5)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 250, Skew = 5)', fontsize=28)
         if sets == 6:
-            figure.suptitle('Count Query (Std = 500, Skew = 5)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 500, Skew = 5)', fontsize=28)
         if sets == 7:
-            figure.suptitle('Count Query (Std = 50, Skew = 50)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 50, Skew = 50)', fontsize=28)
         if sets == 8:
-            figure.suptitle('Count Query (Std = 250, Skew = 50)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 250, Skew = 50)', fontsize=28)
         if sets == 9:
-            figure.suptitle('Count Query (Std = 500, Skew = 50)', fontsize=28)
+            figure.suptitle('Count Query (Scale = 500, Skew = 50)', fontsize=28)
 
     ax1.tick_params(axis='both', which='major', labelsize=25)
     ax2.tick_params(axis='both', which='major', labelsize=25)

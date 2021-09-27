@@ -75,7 +75,7 @@ def plots_with_sizes(result_folder, query, attribute):
     #ax2.plot(epsilon, abs(chorus_relative)*100, color = 'xkcd:purple', label="Chorus, J. Near et al (Scala)")
 
     ax2.set_xlabel('ε', fontsize = 12)
-    ax2.set_ylabel('Sample Mean of the \n Absolute Relative Error [%]', fontsize = 16)
+    ax2.set_ylabel('Sample Mean of the \n Relative Error [%]', fontsize = 16)
     
     #ax1.legend(prop={'size': 19}, loc="lower center", bbox_to_anchor=(1.00, -0.02), frameon=False, ncol=4, handletextpad=0.2, handlelength=1, columnspacing=0.5)
     #ax2.legend(prop={'size': 18}, loc="lower center", bbox_to_anchor=(-0.13, -0.30), frameon=False, ncol=2, handletextpad=0.2, handlelength=1, columnspacing=0.5)
