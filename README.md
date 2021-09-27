@@ -56,11 +56,11 @@ These are some of the outputs of our benchmark:
 
 #### Utility on synthetic datasets
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count-1.png" alt="drawing" width="300"/>
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum-1.png" alt="drawing" width="300"/>
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/count/count.pdf" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/sum/sum.pdf" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/var/var.pdf" alt="drawing" width="300"/>
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/mean_merged/mean_merged.pdf" alt="drawing" width="300"/>
 
 
 #### Utility on real datasets
@@ -68,11 +68,11 @@ These are some of the outputs of our benchmark:
 
 Education Dataset: Absences (Count Query) 
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/absences_count/absences_count-1.png" alt="drawing" width="300"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/absences_count/absences_count.pdf" alt="drawing" width="300"/>
 
 Adult Dataset: Age (Variance Query) 
 
-<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/age_var/age_var-1.png" alt="drawing" width="325"/>
+<img src="/Libraries_Benchmark/Normally_distributed_dataset_experiments/Results/images/age_var/var_age.pdf" alt="drawing" width="325"/>
 
 
 #### Execution time
